@@ -1,0 +1,92 @@
+﻿<Window x:Class="SDP.PrinterService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDP.PrinterService"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" 
+                       Text="Printers"
+                       FontSize="12" 
+                       VerticalAlignment="Center"
+                       Margin="12 0 "/>
+            <ComboBox Grid.Column="1" 
+                      ItemsSource="{Binding Printers}" 
+                      SelectedItem="{Binding SelectedPrinter, UpdateSourceTrigger=PropertyChanged}"
+                      FontSize="12"
+                      VerticalAlignment="Center"
+                      Margin="0 0 12 0"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Text="Trays"
+                       FontSize="12"
+                       VerticalAlignment="Center"
+                       Margin="12 0 " />
+            <ComboBox Grid.Column="1"
+                      ItemsSource="{Binding Trays}"
+                      SelectedItem="{Binding SelectedTray, UpdateSourceTrigger=PropertyChanged}"
+                      FontSize="12"
+                      VerticalAlignment="Center"
+                      Margin="0 0 12 0" />
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Text="Paper"
+                       FontSize="12"
+                       VerticalAlignment="Center"
+                       Margin="12 0 " />
+            <ComboBox Grid.Column="1"
+                      ItemsSource="{Binding Paper}"
+                      SelectedItem="{Binding SelectedPaper, UpdateSourceTrigger=PropertyChanged}"
+                      FontSize="12"
+                      VerticalAlignment="Center"
+                      Margin="0 0 12 0" />
+        </Grid>
+
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Duplex" 
+                       VerticalAlignment="Center"
+                       Margin="12 0"/>
+            <CheckBox IsChecked="{Binding Duplex, UpdateSourceTrigger=PropertyChanged}"
+                      VerticalAlignment="Center" 
+                      Margin="0 0 12 0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="5">
+
+            <Button Content="Print"
+                    Command="{Binding PrintCommand}" />
+        </Grid>
+        
+    </Grid>
+</Window>
